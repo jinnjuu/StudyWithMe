@@ -7,11 +7,10 @@ import android.support.v4.app.Fragment
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
 import android.util.Log
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
+import android.view.*
 import android.widget.Button
 import android.widget.EditText
+import android.widget.TextView
 import com.example.studywithme.MainActivity
 import com.example.studywithme.R
 import com.example.studywithme.scheduling.Goal_list_adapter
@@ -47,12 +46,16 @@ class Home : Fragment() {
     val userID = "1"
 
 
-    override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
+    override fun onCreateView(inflater: LayoutInflater,container: ViewGroup?,savedInstanceState: Bundle?): View? {
         val view: View = inflater.inflate(R.layout.fragment_home, container, false)
+
+        // 상단바 메뉴 쓰는 것으로 설정
+        setHasOptionsMenu(true)
+
+        // 상단바 이름 바꾸기
+        var toolbarTitle: TextView = activity!!.findViewById(R.id.toolbar_title)
+        toolbarTitle.text = "스터디위드미"
+
 
         // RecyclerView 사용할 것. 어댑터를 생성
         goalListAdapter = Goal_list_adapter(view.context, goalList,this)
@@ -144,7 +147,7 @@ class Home : Fragment() {
     // 카테고리 데이터 db 추가
     fun add_goalData_to_DB(user_id: String, goal_name: String, dday: String) {
         // url 만들기
-        val url = "http://10.0.2.2/insert.php"
+        val url = "http://203.245.10.33:8888/scheduling/insert.php"
         // 데이터를 담아 보낼 바디 만들기
         val requestBody: RequestBody = FormBody.Builder()
             .add("user_id",user_id) // user_id 일단 임의로 1으로 저장
@@ -173,7 +176,7 @@ class Home : Fragment() {
     // db에서 php로 데이터 가져오기 (+userID 체크 추가)
     fun getGoalList_from_DB(phpName: String) {
         // url 만들기
-        val url = "http://10.0.2.2/" + phpName + ".php"
+        val url = "http://203.245.10.33:8888/scheduling/" + phpName + ".php"
         // POST로 보낼 데이터 설정
         // 데이터를 담아 보낼 바디 만들기
         val requestBody: RequestBody = FormBody.Builder()
@@ -263,8 +266,37 @@ class Home : Fragment() {
 
 
 
-        override fun onActivityCreated(savedInstanceState: Bundle?) {
-            super.onActivityCreated(savedInstanceState)
+    override fun onActivityCreated(savedInstanceState: Bundle?) {
+        super.onActivityCreated(savedInstanceState)
 
-        }
     }
+
+    override fun onResume() {
+        super.onResume()
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu?, inflater: MenuInflater?) {
+        inflater!!.inflate(R.menu.home_menu, menu)
+        super.onCreateOptionsMenu(menu, inflater)
+    }
+
+    // menu에 있는 메뉴 클릭 시 이벤트 처리
+    override fun onOptionsItemSelected(item: MenuItem?): Boolean {
+        when(item?.itemId){
+            R.id.home_profile -> {
+                val fragment = Profile() // Fragment 생성
+                val fm = fragmentManager
+                val fmt = fm?.beginTransaction()
+                fmt?.replace(R.id.content, fragment)?.addToBackStack(null)?.commit()
+            }
+
+            //뒤로가기 버튼 클릭 시
+            android.R.id.home -> {
+                activity!!.onBackPressed()
+            }
+        }
+        return super.onOptionsItemSelected(item)
+    }
+
+
+}

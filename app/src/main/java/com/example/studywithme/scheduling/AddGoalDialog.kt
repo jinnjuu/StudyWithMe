@@ -1,6 +1,5 @@
 package com.example.studywithme.scheduling
 
-
 import android.app.AlertDialog
 import android.app.Dialog
 import android.os.Bundle
