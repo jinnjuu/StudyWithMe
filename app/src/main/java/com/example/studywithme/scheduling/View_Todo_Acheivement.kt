@@ -11,11 +11,13 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.TextView
 import com.example.studywithme.R
+import com.github.mikephil.charting.charts.HorizontalBarChart
 import kotlinx.android.synthetic.main.fragment_calendar_view_todo_acheivement.*
 
 class View_Todo_Acheivement : Fragment() {
 
 
+    lateinit var skillRatingChart : HorizontalBarChart
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)

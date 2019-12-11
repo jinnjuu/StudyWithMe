@@ -95,7 +95,11 @@ class View_Month_Acheivement : Fragment() {
 
         monthandyear_view_now.setText(today_year+"년 "+today_month+"월")
         month_view_last.setText("◀◀"+last_month+"월")
+        if (next_month.toInt() <= 12 )
         month_view_next.setText(next_month+"월"+"▶▶")
+        else { //현재 월 12월이면 1월로 다시 세팅해줘야함
+            next_month = "1"
+            month_view_next.setText(next_month+"월"+"▶▶")}
         no_meaning.setText(period.toString())
 
         val Goal_name = view?.findViewById<TextView>(R.id.Goal_name)

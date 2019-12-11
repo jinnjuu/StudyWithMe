@@ -31,7 +31,7 @@ class Goal_list_adapter (val context: Context, val goalList: ArrayList<Goal_list
     override fun onBindViewHolder(holder: Holder, position: Int) {
         holder?.bind(goalList[position], context)
         holder?.goalName.setOnClickListener{
-            var fragment : Fragment = com.example.studywithme.fragment.Calendar()
+            var fragment : Fragment = com.example.studywithme.scheduling.View_Todo_List()
             var bundle: Bundle = Bundle(1)
             bundle.putString("goal_name",holder?.goalName.text.toString())
             bundle.putString("d_day",holder?.dday.text.toString())
@@ -40,8 +40,6 @@ class Goal_list_adapter (val context: Context, val goalList: ArrayList<Goal_list
             fragment.arguments = bundle
             //링크 프래그먼트로 전환
             topFragment.fragmentManager!!.beginTransaction().replace(R.id.content, fragment).addToBackStack(null).commitAllowingStateLoss()
-
-
         }
     }
     /* RecyclerView로 만들어지는 item의 총 개수를 반환한다.*/

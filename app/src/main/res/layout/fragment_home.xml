@@ -101,65 +101,7 @@
 
             <!--            <View style="@style/Divider"/>-->
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical">
 
-                <RelativeLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_alignParentLeft="true"
-                        android:layout_marginTop="10dp"
-                        android:layout_marginLeft="20dp"
-                        android:text="우디부디1의 목표 목록"
-                        android:textSize="25dp"
-                        android:textStyle="bold" />
-
-                    <Button
-                        android:id="@+id/home_add_goal"
-                        android:layout_width="wrap_content"
-                        android:layout_height="30dp"
-                        android:layout_alignParentRight="true"
-                        android:layout_marginTop="10dp"
-                        android:layout_marginRight="20dp"
-                        android:text="목표 추가"
-                        android:textStyle="bold"
-                        android:background="@drawable/ggboard_btn_shape"
-                        android:textColor="#ffffff"/>
-                </RelativeLayout>
-
-                <LinearLayout
-                    android:id="@+id/scheduling_goal_layout"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:layout_margin="20dp">
-
-                    <TextView
-                        android:id="@+id/scheduling_goal_list_has_no_item_msg"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:padding="20dp"
-                        android:textColor="#000000"
-                        android:textSize="15sp"
-                        android:textStyle="bold"
-                        android:visibility="gone" />
-                    <android.support.v7.widget.RecyclerView
-                        android:id="@+id/goal_list_recyclerview"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_margin="8dp"/>
-
-
-                </LinearLayout>
-
-
-            </LinearLayout>
 
 
 

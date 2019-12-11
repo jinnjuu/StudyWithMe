@@ -15,12 +15,14 @@
         android:background="@drawable/round_square_darkgray"
         android:textSize="22sp"
         android:textStyle="bold"
+        android:fontFamily="@font/nanum2"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         tools:text="goalName"
         android:textColor="#FFFFFF"
         />
 
+    //목표이름
     <TextView
         android:id="@+id/goal_list_dDay_message"
         android:layout_width="match_parent"
@@ -30,9 +32,12 @@
         android:layout_marginBottom="4dp"
         android:gravity="center"
         android:textStyle="bold"
+        android:fontFamily="@font/nanum2"
         app:layout_constraintTop_toBottomOf="@+id/goal_list_goalName"
         tools:text="하잇"/>
 
+
+    //디데이
     <TextView
         android:id="@+id/goal_list_dDay"
         android:layout_width="match_parent"
@@ -45,6 +50,7 @@
         app:layout_constraintTop_toBottomOf="@+id/goal_list_dDay_message"
         tools:text="dDay"/>
 
+    //골아이디 제대로 넘어가는지 확인을 위해! 화면에서는 안보여용
     <TextView
         android:id="@+id/goal_list_id"
         android:layout_width="match_parent"
